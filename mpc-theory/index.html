@@ -24,13 +24,33 @@
 </script>
 </d-front-matter>
 
-<d-title>
-  <div class="site-nav"><a href="../">Dynamics — Study Notes</a> <span>/</span> MPC Control and Agents</div>
+<div class="article-header">
+  <a class="logo" href="../"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 13m-10 0a10 10 0 1 0 20 0a10 10 0 1 0 -20 0" fill="none" stroke="#1F1F1E" stroke-width="1.6"/><path d="M5 16 C8 6, 20 6, 19 13 S11 19, 13 13" fill="none" stroke="#1F1F1E" stroke-width="1.6"/><circle cx="13" cy="13" r="1.8" fill="#1F1F1E"/></svg></a>
+  <a class="home-link" href="../">Dynamics — Study Notes</a>
+</div>
+
+<d-title class="real-title">
   <h1>MPC Theory: Receding-Horizon Control from First Principles</h1>
-  <p>Model predictive control solves a small optimal-control problem at every time step, applies only its first move, and repeats. These notes build it up from a linear model to the stability proof.</p>
+  <figure class="hero-fig">
+    <svg class="hero" viewBox="0 0 760 260" role="img" aria-label="Overview: the MPC loop, the receding horizon, and stability through a terminal set" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><defs><marker id="h-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9a978c"/></marker><marker id="h-ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#222"/></marker></defs><g transform="translate(10,0)"><text x="110" y="18" text-anchor="middle" font-size="13.5" fill="#222">Each step solves a small</text><text x="110" y="35" text-anchor="middle" font-size="13.5" fill="#222">optimal-control problem</text><rect x="0" y="50" width="220" height="200" rx="6" fill="#fff" stroke="#B8B6AE"/><rect x="40" y="66" width="140" height="28" rx="4" fill="#F6F6F3" stroke="#B8B6AE" stroke-width="1"/><text x="110" y="84" text-anchor="middle" font-size="12" fill="#222" font-family="ui-monospace,Menlo,monospace">measure x(k)</text><path d="M110 94V106" stroke="#9a978c" marker-end="url(#h-ar)"/><rect x="40" y="108" width="140" height="28" rx="4" fill="#F6F6F3" stroke="#B8B6AE" stroke-width="1"/><text x="110" y="126" text-anchor="middle" font-size="12" fill="#222" font-family="ui-monospace,Menlo,monospace">predict N steps</text><path d="M110 136V148" stroke="#9a978c" marker-end="url(#h-ar)"/><rect x="40" y="150" width="140" height="28" rx="4" fill="#F6F6F3" stroke="#B8B6AE" stroke-width="1"/><text x="110" y="168" text-anchor="middle" font-size="12" fill="#222" font-family="ui-monospace,Menlo,monospace">solve QP</text><path d="M110 178V190" stroke="#9a978c" marker-end="url(#h-ar)"/><rect x="40" y="192" width="140" height="28" rx="4" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)" stroke-width="1.5"/><text x="110" y="210" text-anchor="middle" font-size="12" fill="#222" font-family="ui-monospace,Menlo,monospace">apply u₀ only</text><path d="M180 206H200V80H184" fill="none" stroke="#9a978c" stroke-dasharray="3 3" marker-end="url(#h-ar)"/><text x="204" y="146" font-size="10" fill="#666" transform="rotate(90 204 146)" text-anchor="middle">k → k+1</text></g><g transform="translate(270,0)"><text x="110" y="18" text-anchor="middle" font-size="13.5" fill="#222">The plan is re-made from</text><text x="110" y="35" text-anchor="middle" font-size="13.5" fill="#222">a fresh measurement</text><rect x="0" y="50" width="220" height="200" rx="6" fill="#fff" stroke="#B8B6AE"/><rect x="20" y="82" width="20" height="20" rx="3" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" /><rect x="44" y="82" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="68" y="82" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="92" y="82" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="116" y="82" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="44" y="120" width="20" height="20" rx="3" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" /><rect x="68" y="120" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="92" y="120" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="116" y="120" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="140" y="120" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="68" y="158" width="20" height="20" rx="3" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" /><rect x="92" y="158" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="116" y="158" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="140" y="158" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="164" y="158" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="92" y="196" width="20" height="20" rx="3" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" /><rect x="116" y="196" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="140" y="196" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="164" y="196" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><rect x="188" y="196" width="20" height="20" rx="3" fill="#fff" stroke="#9a978c" stroke-dasharray="2 2"/><text x="110" y="70" text-anchor="middle" font-size="10.5" fill="#666">time →</text><text x="110" y="244" text-anchor="middle" font-size="10.5" fill="#666">plan N, apply 1, slide</text></g><g transform="translate(530,0)"><text x="110" y="18" text-anchor="middle" font-size="13.5" fill="#222">Terminal cost and set</text><text x="110" y="35" text-anchor="middle" font-size="13.5" fill="#222">guarantee stability</text><rect x="0" y="50" width="220" height="200" rx="6" fill="#fff" stroke="#B8B6AE"/><ellipse cx="110" cy="150" rx="92" ry="78" fill="#F6F6F3" stroke="#B8B6AE"/><ellipse cx="110" cy="150" rx="34" ry="26" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)"/><text x="30" y="96" font-size="12" fill="#666" font-style="italic">𝒳</text><text x="122" y="138" font-size="11" fill="hsl(206,70%,45%)" font-style="italic">𝒳<tspan font-size="8" dy="3">f</tspan></text><path d="M42 196 C70 120, 150 210, 170 150 S120 110, 112 150" fill="none" stroke="#222" stroke-width="1.5" marker-end="url(#h-ar2)"/><circle cx="42" cy="196" r="3" fill="#222"/><circle cx="110" cy="150" r="2.5" fill="hsl(206,70%,45%)"/></g></svg>
+  </figure>
 </d-title>
 
-<d-byline></d-byline>
+<div class="d-byline-container base-grid">
+  <div class="d-byline">
+    <div class="authors" style="grid-area: authors;">
+      <h3>Authors</h3>
+      <div><span class="author">Anirudh Jamkhandi</span></div>
+    </div>
+    <div class="published" style="grid-area: published;">
+      <h3>Published</h3>
+      <div>October 26th, 2026</div>
+    </div>
+    <div class="info" style="grid-area: info; margin-top: -15px;">
+      <div><span>Study notes, part 1 of the MPC Control and Agents series.</span></div>
+    </div>
+  </div>
+</div>
 
 <d-article>
 
@@ -48,7 +68,7 @@
 </nav>
 </d-contents>
 
-<h2 id="core-idea"><a href="#core-idea">Core idea</a></h2>
+<h3 id="core-idea"><a href="#core-idea">Core idea</a></h3>
 
 <p>Model predictive control (MPC) is finite-horizon optimal control, re-solved at every time step from the latest measured state. Each step runs the same loop:</p>
 
@@ -60,20 +80,28 @@
 </ol>
 
 <figure class="l-body-outset">
+<div class="fig-title">Each time step plans ahead, then commits to one move</div>
+<div class="panel">
 <svg class="fig" viewBox="0 0 704 160" role="img" aria-label="MPC loop: measure, predict, optimize, apply only the first input" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#aaa"/></marker></defs><path d="M164.0 70H186.0" stroke="#aaa" stroke-width="1.25" fill="none" marker-end="url(#ar)"/><path d="M336.0 70H358.0" stroke="#aaa" stroke-width="1.25" fill="none" marker-end="url(#ar)"/><path d="M508.0 70H530.0" stroke="#aaa" stroke-width="1.25" fill="none" marker-end="url(#ar)"/><path d="M606 98.0V132H90V100.0" stroke="#aaa" stroke-width="1.25" fill="none" marker-end="url(#ar)"/><text x="348.0" y="124" text-anchor="middle" font-size="12" fill="#777">plant moves one step; repeat at k + 1</text><rect x="16.0" y="42.0" width="148" height="56" rx="6" fill="#fff" stroke="#aaa" stroke-width="1.25"/><text x="90" y="67" text-anchor="middle" font-size="14" font-weight="600" fill="#222">Measure x(k)</text><text x="90" y="85" text-anchor="middle" font-size="12" fill="#777">state at time k</text><rect x="188.0" y="42.0" width="148" height="56" rx="6" fill="#fff" stroke="#aaa" stroke-width="1.25"/><text x="262" y="67" text-anchor="middle" font-size="14" font-weight="600" fill="#222">Predict</text><text x="262" y="85" text-anchor="middle" font-size="12" fill="#777">N steps with the model</text><rect x="360.0" y="42.0" width="148" height="56" rx="6" fill="#fff" stroke="#aaa" stroke-width="1.25"/><text x="434" y="67" text-anchor="middle" font-size="14" font-weight="600" fill="#222">Optimize</text><text x="434" y="85" text-anchor="middle" font-size="12" fill="#777">QP over N inputs</text><rect x="532.0" y="42.0" width="148" height="56" rx="6" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)" stroke-width="2"/><text x="606" y="67" text-anchor="middle" font-size="14" font-weight="600" fill="#222">Apply only u₀</text><text x="606" y="85" text-anchor="middle" font-size="12" fill="#777">discard the rest</text></svg>
+</div>
 <figcaption><b>Figure 1.</b> The MPC loop. Each time step plans over <d-math>N</d-math> future steps but sends only the first input to the plant; the measurement at the next step closes the loop.</figcaption>
 </figure>
 
 <p>This is the <b>receding horizon</b> principle: the prediction window slides forward with time. Because the plan is recomputed from a fresh measurement every step, MPC is a feedback law, not an open-loop plan. Model error and disturbances are corrected at the next step.</p>
 
 <figure class="l-body-outset">
+<div class="fig-title">Only the first input of each plan reaches the plant</div>
+<div class="panel">
 <svg class="fig" viewBox="0 0 704 236" role="img" aria-label="Receding horizon: each solve plans five inputs and applies only the first" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><text x="179.0" y="20" text-anchor="middle" font-size="12" fill="#777">k</text><line x1="150" x2="150" y1="28" y2="214" stroke="#eee"/><text x="237.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+1</text><line x1="208" x2="208" y1="28" y2="214" stroke="#eee"/><text x="295.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+2</text><line x1="266" x2="266" y1="28" y2="214" stroke="#eee"/><text x="353.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+3</text><line x1="324" x2="324" y1="28" y2="214" stroke="#eee"/><text x="411.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+4</text><line x1="382" x2="382" y1="28" y2="214" stroke="#eee"/><text x="469.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+5</text><line x1="440" x2="440" y1="28" y2="214" stroke="#eee"/><text x="527.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+6</text><line x1="498" x2="498" y1="28" y2="214" stroke="#eee"/><text x="585.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+7</text><line x1="556" x2="556" y1="28" y2="214" stroke="#eee"/><text x="643.0" y="20" text-anchor="middle" font-size="12" fill="#777">k+8</text><line x1="614" x2="614" y1="28" y2="214" stroke="#eee"/><line x1="672" x2="672" y1="28" y2="214" stroke="#eee"/><text x="136" y="51" text-anchor="end" font-size="13" fill="#222">solve at k</text><rect x="153" y="32.0" width="52" height="28" rx="4" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" stroke-width="1.25" /><text x="179.0" y="50" text-anchor="middle" font-size="12" fill="#fff">u<tspan dy="3" font-size="9">0</tspan></text><rect x="211" y="32.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="237.0" y="50" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">1</tspan></text><rect x="269" y="32.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="295.0" y="50" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">2</tspan></text><rect x="327" y="32.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="353.0" y="50" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">3</tspan></text><rect x="385" y="32.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="411.0" y="50" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">4</tspan></text><text x="136" y="95" text-anchor="end" font-size="13" fill="#222">solve at k+1</text><rect x="211" y="76.0" width="52" height="28" rx="4" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" stroke-width="1.25" /><text x="237.0" y="94" text-anchor="middle" font-size="12" fill="#fff">u<tspan dy="3" font-size="9">0</tspan></text><rect x="269" y="76.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="295.0" y="94" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">1</tspan></text><rect x="327" y="76.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="353.0" y="94" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">2</tspan></text><rect x="385" y="76.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="411.0" y="94" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">3</tspan></text><rect x="443" y="76.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="469.0" y="94" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">4</tspan></text><text x="136" y="139" text-anchor="end" font-size="13" fill="#222">solve at k+2</text><rect x="269" y="120.0" width="52" height="28" rx="4" fill="hsl(206,70%,45%)" stroke="hsl(206,70%,45%)" stroke-width="1.25" /><text x="295.0" y="138" text-anchor="middle" font-size="12" fill="#fff">u<tspan dy="3" font-size="9">0</tspan></text><rect x="327" y="120.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="353.0" y="138" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">1</tspan></text><rect x="385" y="120.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="411.0" y="138" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">2</tspan></text><rect x="443" y="120.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="469.0" y="138" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">3</tspan></text><rect x="501" y="120.0" width="52" height="28" rx="4" fill="#fff" stroke="#aaa" stroke-width="1.25" stroke-dasharray="3 3"/><text x="527.0" y="138" text-anchor="middle" font-size="12" fill="#777">u<tspan dy="3" font-size="9">4</tspan></text><text x="450" y="51" font-size="12" fill="#777">← horizon N = 5</text><line x1="10" x2="672" y1="170" y2="170" stroke="#ddd"/><text x="136" y="201" text-anchor="end" font-size="13" font-weight="600" fill="#222">applied to plant</text><rect x="153" y="182.0" width="52" height="28" rx="4" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)" stroke-width="1.5"/><text x="179.0" y="200" text-anchor="middle" font-size="12" fill="#222">u(k)</text><rect x="211" y="182.0" width="52" height="28" rx="4" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)" stroke-width="1.5"/><text x="237.0" y="200" text-anchor="middle" font-size="12" fill="#222">u(k+1)</text><rect x="269" y="182.0" width="52" height="28" rx="4" fill="hsl(206,70%,94%)" stroke="hsl(206,70%,45%)" stroke-width="1.5"/><text x="295.0" y="200" text-anchor="middle" font-size="12" fill="#222">u(k+2)</text><text x="334" y="201" font-size="12" fill="#777">… one input per step</text></svg>
+</div>
 <figcaption><b>Figure 2.</b> The receding horizon with <d-math>N = 5</d-math>. Each row is one optimization. Only the first planned input (filled) is applied; the other four (outlined) are discarded when the window moves one step right.</figcaption>
 </figure>
 
 <p>What MPC buys over classical controllers: it handles <b>constraints</b> (actuator limits, safe state regions) explicitly, works naturally for <b>multi-input multi-output</b> systems, and uses <b>preview</b> of future references or disturbances when they are known.</p>
 
-<h2 id="formulation"><a href="#formulation">Problem formulation</a></h2>
+<hr>
+
+<h3 id="formulation"><a href="#formulation">Problem formulation</a></h3>
 
 <p>Standard linear MPC uses a discrete-time linear model and a quadratic cost. The model is</p>
 
@@ -105,7 +133,9 @@
 
 <p>Tuning intuition: raising <d-math>Q</d-math> relative to <d-math>R</d-math> gives aggressive, fast control; raising <d-math>R</d-math> gives gentle, energy-saving control. A longer <d-math>N</d-math> gives better performance and a larger feasible region, at higher computational cost.</p>
 
-<h2 id="batch"><a href="#batch">Batch form and the QP</a></h2>
+<hr>
+
+<h3 id="batch"><a href="#batch">Batch form and the QP</a></h3>
 
 <p>Eliminating the states turns the MPC problem into a quadratic program (QP) in the stacked inputs alone. Roll the dynamics forward from <d-math>x_0</d-math>:</p>
 
@@ -132,7 +162,9 @@ H = S_u^\top \bar{Q} S_u + \bar{R}, \quad F = S_u^\top \bar{Q} S_x .
 
 <p><d-math>H \succ 0</d-math> because <d-math>R \succ 0</d-math>, so the QP is strictly convex with a unique solution. Only <d-math>x_0</d-math> changes between time steps; <d-math>H, F, G, w, E</d-math> can be built once offline.<d-footnote>The alternative <i>sparse</i> form keeps the states as decision variables, with the dynamics as equality constraints. It has more variables but a banded structure, and it scales better for long horizons.</d-footnote></p>
 
-<h2 id="lqr"><a href="#lqr">Unconstrained case and the link to LQR</a></h2>
+<hr>
+
+<h3 id="lqr"><a href="#lqr">Unconstrained case and the link to LQR</a></h3>
 
 <p>Without constraints, MPC reduces to a fixed linear state feedback, and with the right terminal cost it is exactly LQR. Set the gradient of <d-math>J(U)</d-math> to zero:</p>
 
@@ -149,7 +181,9 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 
 <p><b>Constraints are why MPC exists.</b> With input or state constraints, the optimal law is no longer linear. It is <b>piecewise affine</b> in <d-math>x</d-math>: the state space splits into polyhedral regions, each with its own affine law <d-math>u = K_r x + k_r</d-math>, one region per set of active constraints <d-cite key="bemporad2002explicit"></d-cite>. LQR cannot represent this; MPC computes it implicitly by solving the QP online.</p>
 
-<h2 id="failure"><a href="#failure">Why a finite horizon can fail</a></h2>
+<hr>
+
+<h3 id="failure"><a href="#failure">Why a finite horizon can fail</a></h3>
 
 <p>Re-solving a finite-horizon problem does not automatically give a stable or even well-defined closed loop. Two failure modes exist.</p>
 
@@ -159,7 +193,9 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 
 <p>A long enough horizon usually hides both problems in practice, but gives no guarantee. The next section gives the standard design that guarantees both properties for any <d-math>N</d-math>, from any state where the first problem is feasible.</p>
 
-<h2 id="stability"><a href="#stability">Stability recipe: terminal ingredients</a></h2>
+<hr>
+
+<h3 id="stability"><a href="#stability">Stability recipe: terminal ingredients</a></h3>
 
 <p>Choose the terminal cost <d-math>P</d-math> and terminal set <d-math>\mathcal{X}_f</d-math> so the optimal cost <d-math>V_N(x)</d-math> works as a Lyapunov function. Then the closed loop is recursively feasible and asymptotically stable <d-cite key="mayne2000constrained"></d-cite>. The ingredients:</p>
 
@@ -185,7 +221,9 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 
 <p>and it holds with equality when <d-math>P</d-math> comes from the DARE and <d-math>K</d-math> is the LQR gain.<d-footnote>Many implementations drop <d-math>\mathcal{X}_f</d-math> and use a long <d-math>N</d-math> with <d-math>P</d-math> from the DARE. Stability then holds only approximately, or for large enough <d-math>N</d-math> <d-cite key="grune2017nonlinear"></d-cite>.</d-footnote></p>
 
-<h2 id="variants"><a href="#variants">Map of MPC variants</a></h2>
+<hr>
+
+<h3 id="variants"><a href="#variants">Map of MPC variants</a></h3>
 
 <p>Every variant keeps the receding-horizon loop and changes the model, the cost, the uncertainty treatment, or how the problem is solved <d-cite key="rawlings2017mpc,borrelli2017predictive"></d-cite>.</p>
 
@@ -203,7 +241,9 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 </tbody>
 </table>
 
-<h2 id="self-check"><a href="#self-check">Self-check</a></h2>
+<hr>
+
+<h3 id="self-check"><a href="#self-check">Self-check</a></h3>
 
 <p>Try each question before opening its answer.</p>
 
