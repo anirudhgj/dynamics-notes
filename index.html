@@ -36,7 +36,7 @@ section.tab > .l-page, section.tab > figure.l-page { grid-column: page; }
 </style>
 </head>
 <body>
-<nav class="tabs"><h3>MPC Control and Agents</h3><div class="tabgroup" data-tab="mpc-theory"><a class="tablink" href="#/mpc-theory" data-tab="mpc-theory">MPC Theory</a><div class="subs"><a class="sublink" href="#/mpc-theory/mpc-theory--core-idea" data-sub="mpc-theory--core-idea">Core idea</a><a class="sublink" href="#/mpc-theory/mpc-theory--formulation" data-sub="mpc-theory--formulation">Problem formulation</a><a class="sublink" href="#/mpc-theory/mpc-theory--batch" data-sub="mpc-theory--batch">Batch form and the QP</a><a class="sublink" href="#/mpc-theory/mpc-theory--lqr" data-sub="mpc-theory--lqr">Unconstrained case and the link to LQR</a><a class="sublink" href="#/mpc-theory/mpc-theory--failure" data-sub="mpc-theory--failure">Why a finite horizon can fail</a><a class="sublink" href="#/mpc-theory/mpc-theory--stability" data-sub="mpc-theory--stability">Stability recipe: terminal ingredients</a><a class="sublink" href="#/mpc-theory/mpc-theory--variants" data-sub="mpc-theory--variants">Map of MPC variants</a><a class="sublink" href="#/mpc-theory/mpc-theory--self-check" data-sub="mpc-theory--self-check">Self-check</a></div></div><div class="tabgroup" data-tab="time-varying-systems"><a class="tablink" href="#/time-varying-systems" data-tab="time-varying-systems">Time-Varying Dynamical Systems</a><div class="subs"></div></div><div class="navfoot"><a href="files/MPC%20Theory%20-%20Study%20Notes.pdf">PDF</a> · <a href="https://github.com/anirudhgj/dynamics-notes">Source</a></div></nav>
+<nav class="tabs"><h3>MPC Control and Agents</h3><div class="tabgroup" data-tab="mpc-theory"><a class="tablink" href="#/mpc-theory" data-tab="mpc-theory">MPC Theory</a><div class="subs"><a class="sublink" href="#/mpc-theory/mpc-theory--core-idea" data-sub="mpc-theory--core-idea">Core idea</a><a class="sublink" href="#/mpc-theory/mpc-theory--formulation" data-sub="mpc-theory--formulation">Problem formulation</a><a class="sublink" href="#/mpc-theory/mpc-theory--batch" data-sub="mpc-theory--batch">Batch form and the QP</a><a class="sublink" href="#/mpc-theory/mpc-theory--lqr" data-sub="mpc-theory--lqr">Unconstrained case and the link to LQR</a><a class="sublink" href="#/mpc-theory/mpc-theory--failure" data-sub="mpc-theory--failure">Why a finite horizon can fail</a><a class="sublink" href="#/mpc-theory/mpc-theory--stability" data-sub="mpc-theory--stability">Stability recipe: terminal ingredients</a><a class="sublink" href="#/mpc-theory/mpc-theory--variants" data-sub="mpc-theory--variants">Map of MPC variants</a><a class="sublink" href="#/mpc-theory/mpc-theory--self-check" data-sub="mpc-theory--self-check">Self-check</a></div></div><div class="tabgroup" data-tab="time-varying-systems"><a class="tablink" href="#/time-varying-systems" data-tab="time-varying-systems">Time-Varying Dynamical Systems</a><div class="subs"><a class="sublink" href="#/time-varying-systems/time-varying-systems--definition" data-sub="time-varying-systems--definition">Time-invariant vs time-varying</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--solution" data-sub="time-varying-systems--solution">Solution: the state-transition matrix</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--stability" data-sub="time-varying-systems--stability">Stability: eigenvalues are not enough</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--tools" data-sub="time-varying-systems--tools">What else changes</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--mpc" data-sub="time-varying-systems--mpc">Link to MPC</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--self-check" data-sub="time-varying-systems--self-check">Self-check</a></div></div><div class="navfoot"><a href="files/MPC%20Theory%20-%20Study%20Notes.pdf">PDF</a> · <a href="https://github.com/anirudhgj/dynamics-notes">Source</a></div></nav>
 <d-front-matter><script type="text/json">{"title": "MPC Control and Agents", "description": "Study notes on model predictive control: theory, implementation, and its use in agents.", "authors": [{"author": "Anirudh Jamkhandi"}], "publishedDate": "2026-10-26T12:00:00.000Z"}</script></d-front-matter>
 <d-title><h1>MPC Control and Agents</h1>
 <p>Study notes on model predictive control: the theory of receding-horizon control, how to implement it, and how it is used in agents.</p></d-title>
@@ -229,7 +229,81 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 </details>
 </section>
 <section class="tab" id="tab-time-varying-systems"><h2 id="time-varying-systems">Time-Varying Dynamical Systems</h2>
-<p>Not started.</p>
+<p>A system is time-varying when its dynamics depend on the clock. This tab compares linear time-varying (LTV) systems with linear time-invariant (LTI) ones and lists which LTI tools survive.</p>
+<h3 id="time-varying-systems--definition">Time-invariant vs time-varying</h3>
+
+<p>An LTI system has constant matrices:</p>
+<d-math block>\dot{x} = A x + B u.</d-math>
+<p>Shifting an input in time shifts the response by the same amount. Only the elapsed time <d-math>t - t_0</d-math> matters.</p>
+
+<p>An LTV system has matrices that depend on time:</p>
+<d-math block>\dot{x} = A(t)\, x + B(t)\, u.</d-math>
+<p>The same input applied at two different times gives two different responses. The start time <d-math>t_0</d-math> matters, not only <d-math>t - t_0</d-math>.</p>
+
+<p>Examples: a rocket that loses mass as it burns fuel, a satellite in orbit, components that age, and any nonlinear system linearized along a trajectory rather than at a fixed point.</p>
+
+<h3 id="time-varying-systems--solution">Solution: the state-transition matrix</h3>
+
+<p>For LTI systems, <d-math>x(t) = e^{A(t - t_0)} x_0</d-math>. For LTV systems, the matrix exponential is replaced by the state-transition matrix <d-math>\Phi(t, t_0)</d-math>, defined by</p>
+<d-math block>\frac{\partial}{\partial t} \Phi(t, t_0) = A(t)\, \Phi(t, t_0), \qquad \Phi(t_0, t_0) = I.</d-math>
+<p>The full solution is</p>
+<d-math block>x(t) = \Phi(t, t_0)\, x_0 + \int_{t_0}^{t} \Phi(t, \tau)\, B(\tau)\, u(\tau)\, d\tau.</d-math>
+<p><d-math>\Phi</d-math> depends on both arguments, not on their difference. It equals <d-math>\exp\left(\int_{t_0}^{t} A(\tau)\, d\tau\right)</d-math> only when the matrices <d-math>A(t)</d-math> commute with each other at all times. In general there is no closed form, and <d-math>\Phi</d-math> is computed numerically.</p>
+
+<h3 id="time-varying-systems--stability">Stability: eigenvalues are not enough</h3>
+
+<p>An LTI system is asymptotically stable if and only if every eigenvalue of <d-math>A</d-math> has a negative real part. For LTV systems, the matching statement is false: every frozen-time <d-math>A(t)</d-math> can have stable eigenvalues while the system diverges.</p>
+
+<p>The Markus–Yamabe example shows this:</p>
+<d-math block>A(t) = \begin{bmatrix} -1 + 1.5 \cos^2 t & 1 - 1.5 \sin t \cos t \\ -1 - 1.5 \sin t \cos t & -1 + 1.5 \sin^2 t \end{bmatrix}.</d-math>
+<p>For every <d-math>t</d-math>, the eigenvalues of <d-math>A(t)</d-math> are <d-math>-0.25 \pm i\sqrt{7}/4</d-math>. Yet <d-math>x(t) = e^{t/2} \begin{bmatrix} -\cos t & \sin t \end{bmatrix}^\top</d-math> is a solution, and it grows without bound.</p>
+
+<p>Tools that do work for LTV stability:</p>
+<ul>
+<li><b>Lyapunov functions</b> <d-math>V(x, t)</d-math> that depend on time.</li>
+<li><b>Bounds on</b> <d-math>\Phi</d-math>: exponential stability holds when <d-math>\|\Phi(t, t_0)\| \le c\, e^{-\lambda (t - t_0)}</d-math> for some <d-math>c, \lambda &gt; 0</d-math>.</li>
+<li><b>Slow variation</b>: frozen-time eigenvalues do imply stability when <d-math>A(t)</d-math> changes slowly enough, for example with <d-math>\|\dot{A}(t)\|</d-math> small.</li>
+</ul>
+
+<p>Because <d-math>t_0</d-math> matters, LTV stability also has a <b>uniform</b> version. Uniform stability requires the constants <d-math>c</d-math> and <d-math>\lambda</d-math> to be the same for every start time <d-math>t_0</d-math>. For LTI systems, stability is always uniform.</p>
+
+<h3 id="time-varying-systems--tools">What else changes</h3>
+
+<table>
+<thead><tr><th>Topic</th><th>LTI</th><th>LTV</th></tr></thead>
+<tbody>
+<tr><td>Frequency domain</td><td>Transfer functions, Laplace transform, Bode plots</td><td>Mostly unavailable; analysis is done in the time domain</td></tr>
+<tr><td>Controllability</td><td>Rank test on <d-math>[B \;\; AB \;\; \cdots \;\; A^{n-1}B]</d-math></td><td>Gramian <d-math>W(t_0, t_1) = \int_{t_0}^{t_1} \Phi(t_1, \tau) B(\tau) B(\tau)^\top \Phi(t_1, \tau)^\top d\tau</d-math> must be invertible; the answer depends on the interval</td></tr>
+<tr><td>Observability</td><td>Rank test on stacked <d-math>C A^k</d-math></td><td>Observability Gramian over an interval</td></tr>
+<tr><td>LQR gain</td><td>Constant <d-math>K</d-math> from the algebraic Riccati equation</td><td><d-math>K(t) = R^{-1} B(t)^\top P(t)</d-math>, with <d-math>P(t)</d-math> from the Riccati differential equation integrated backward in time</td></tr>
+</tbody>
+</table>
+
+<p>The Riccati differential equation is</p>
+<d-math block>-\dot{P} = A(t)^\top P + P A(t) - P B(t) R^{-1} B(t)^\top P + Q.</d-math>
+
+<h3 id="time-varying-systems--mpc">Link to MPC</h3>
+
+<p>Linearizing a nonlinear plant <d-math>x_{k+1} = f(x_k, u_k)</d-math> around a moving reference <d-math>(\bar{x}_k, \bar{u}_k)</d-math> gives an LTV model:</p>
+<d-math block>\delta x_{k+1} = A_k\, \delta x_k + B_k\, \delta u_k, \qquad A_k = \frac{\partial f}{\partial x}\Big|_{(\bar{x}_k, \bar{u}_k)}, \quad B_k = \frac{\partial f}{\partial u}\Big|_{(\bar{x}_k, \bar{u}_k)}.</d-math>
+<p>Linear time-varying MPC uses this model in the prediction. The QP keeps the same structure as in the LTI case, but the prediction matrices are built from a different <d-math>(A_k, B_k)</d-math> at each step of the horizon.</p>
+
+<h3 id="time-varying-systems--self-check">Self-check</h3>
+
+<details>
+<summary>Why is <d-math>\Phi(t, t_0)</d-math> not just a function of <d-math>t - t_0</d-math>?</summary>
+<p>Because <d-math>A(t)</d-math> changes with absolute time. Starting at <d-math>t_0 = 0</d-math> or <d-math>t_0 = 5</d-math> exposes the state to different matrices over the same elapsed time, so the transition differs.</p>
+</details>
+
+<details>
+<summary>If every frozen <d-math>A(t)</d-math> is Hurwitz, is the LTV system stable?</summary>
+<p>Not in general. The Markus–Yamabe example has constant stable eigenvalues and an unbounded solution. Frozen-time eigenvalues imply stability only when <d-math>A(t)</d-math> varies slowly enough.</p>
+</details>
+
+<details>
+<summary>Why does the LTV LQR gain change with time?</summary>
+<p>The optimal cost-to-go depends on which matrices lie ahead. With <d-math>A(t)</d-math> and <d-math>B(t)</d-math> changing, <d-math>P(t)</d-math> changes too, so <d-math>K(t) = R^{-1} B(t)^\top P(t)</d-math> is not constant.</p>
+</details>
 </section>
 </d-article>
 <d-appendix>
