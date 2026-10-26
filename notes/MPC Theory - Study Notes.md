@@ -11,7 +11,7 @@ Model predictive control (MPC) is finite-horizon optimal control, re-solved at e
 3. **Optimize** an input sequence $u_0, \dots, u_{N-1}$ that minimizes a cost and respects constraints.
 4. **Apply only $u_0$**, discard the rest, and repeat at $k+1$.
 
-![Receding-horizon loop](assets/mpc_loop.png)
+![Receding-horizon loop](mpc_loop.png)
 
 This is the **receding horizon** principle: the prediction window slides forward with time. Because the plan is recomputed from a fresh measurement every step, MPC is a feedback law, not an open-loop plan. Model error and disturbances are corrected at the next step.
 

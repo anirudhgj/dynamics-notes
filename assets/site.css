@@ -1,0 +1,100 @@
+/* Shared styles layered on top of the Distill template. */
+
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  grid-column: text;
+  margin-bottom: 8px;
+}
+.site-nav a {
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-nav span { margin: 0 6px; }
+
+d-title p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+svg.fig {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+
+d-article table {
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+d-article table th {
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+d-article table td,
+d-article table th {
+  padding: 6px 12px 6px 0;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+d-article details {
+  border-left: 2px solid hsl(206, 70%, 75%);
+  background: hsl(206, 40%, 98%);
+  padding: 10px 16px;
+  margin-bottom: 14px;
+}
+d-article details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+d-article details[open] summary {
+  margin-bottom: 8px;
+}
+d-article details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Home page list */
+.paper-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+.paper-list li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  column-gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.paper-list .date {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  padding-top: 4px;
+}
+.paper-list a.title {
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: none;
+  color: rgba(0, 0, 0, 0.85);
+}
+.paper-list a.title:hover { color: hsl(206, 70%, 40%); }
+.paper-list .desc {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 15px;
+  margin-top: 4px;
+}
+.paper-list .planned .title {
+  color: rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 600px) {
+  .paper-list li { grid-template-columns: 1fr; }
+}
