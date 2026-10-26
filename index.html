@@ -36,7 +36,7 @@ section.tab > .l-page, section.tab > figure.l-page { grid-column: page; }
 </style>
 </head>
 <body>
-<nav class="tabs"><h3>Dynamics Notes</h3><div class="tabgroup" data-tab="mpc-theory"><a class="tablink" href="#/mpc-theory" data-tab="mpc-theory">MPC Theory</a><div class="subs"><a class="sublink" href="#/mpc-theory/mpc-theory--core-idea" data-sub="mpc-theory--core-idea">Core idea</a><a class="sublink" href="#/mpc-theory/mpc-theory--formulation" data-sub="mpc-theory--formulation">Problem formulation</a><a class="sublink" href="#/mpc-theory/mpc-theory--batch" data-sub="mpc-theory--batch">Batch form and the QP</a><a class="sublink" href="#/mpc-theory/mpc-theory--lqr" data-sub="mpc-theory--lqr">Unconstrained case and the link to LQR</a><a class="sublink" href="#/mpc-theory/mpc-theory--failure" data-sub="mpc-theory--failure">Why a finite horizon can fail</a><a class="sublink" href="#/mpc-theory/mpc-theory--stability" data-sub="mpc-theory--stability">Stability recipe: terminal ingredients</a><a class="sublink" href="#/mpc-theory/mpc-theory--variants" data-sub="mpc-theory--variants">Map of MPC variants</a><a class="sublink" href="#/mpc-theory/mpc-theory--self-check" data-sub="mpc-theory--self-check">Self-check</a></div></div><div class="tabgroup" data-tab="time-varying-systems"><a class="tablink" href="#/time-varying-systems" data-tab="time-varying-systems">Time-Varying Dynamical Systems</a><div class="subs"><a class="sublink" href="#/time-varying-systems/time-varying-systems--definition" data-sub="time-varying-systems--definition">Time-invariant vs time-varying</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--why" data-sub="time-varying-systems--why">Why systems vary</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--solution" data-sub="time-varying-systems--solution">Solution: the state-transition matrix</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--stability" data-sub="time-varying-systems--stability">Stability: eigenvalues are not enough</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--tools" data-sub="time-varying-systems--tools">What else changes</a></div></div><div class="navfoot"><a href="files/MPC%20Theory%20-%20Study%20Notes.pdf">PDF</a> · <a href="https://github.com/anirudhgj/dynamics-notes">Source</a></div></nav>
+<nav class="tabs"><h3>Dynamics Notes</h3><div class="tabgroup" data-tab="mpc-theory"><a class="tablink" href="#/mpc-theory" data-tab="mpc-theory">MPC Theory</a><div class="subs"><a class="sublink" href="#/mpc-theory/mpc-theory--core-idea" data-sub="mpc-theory--core-idea">Core idea</a><a class="sublink" href="#/mpc-theory/mpc-theory--formulation" data-sub="mpc-theory--formulation">Problem formulation</a><a class="sublink" href="#/mpc-theory/mpc-theory--batch" data-sub="mpc-theory--batch">Batch form and the QP</a><a class="sublink" href="#/mpc-theory/mpc-theory--lqr" data-sub="mpc-theory--lqr">Unconstrained case and the link to LQR</a><a class="sublink" href="#/mpc-theory/mpc-theory--failure" data-sub="mpc-theory--failure">Why a finite horizon can fail</a><a class="sublink" href="#/mpc-theory/mpc-theory--stability" data-sub="mpc-theory--stability">Stability recipe: terminal ingredients</a><a class="sublink" href="#/mpc-theory/mpc-theory--variants" data-sub="mpc-theory--variants">Map of MPC variants</a><a class="sublink" href="#/mpc-theory/mpc-theory--self-check" data-sub="mpc-theory--self-check">Self-check</a></div></div><div class="tabgroup" data-tab="time-varying-systems"><a class="tablink" href="#/time-varying-systems" data-tab="time-varying-systems">Time-Varying Dynamical Systems</a><div class="subs"><a class="sublink" href="#/time-varying-systems/time-varying-systems--definition" data-sub="time-varying-systems--definition">Time-invariant vs time-varying</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--why" data-sub="time-varying-systems--why">Why systems vary</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--solution" data-sub="time-varying-systems--solution">Solution: the state-transition matrix</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--stability" data-sub="time-varying-systems--stability">Stability: eigenvalues are not enough</a><a class="sublink" href="#/time-varying-systems/time-varying-systems--tools" data-sub="time-varying-systems--tools">What else changes</a></div></div><div class="tabgroup" data-tab="lipschitz-dynamics"><a class="tablink" href="#/lipschitz-dynamics" data-tab="lipschitz-dynamics">Lipschitz Dynamics</a><div class="subs"><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--basics" data-sub="lipschitz-dynamics--basics">Start here: the basics</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--definition" data-sub="lipschitz-dynamics--definition">Lipschitz continuity</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--uniqueness" data-sub="lipschitz-dynamics--uniqueness">Existence and uniqueness</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--gronwall" data-sub="lipschitz-dynamics--gronwall">Grönwall and sensitivity</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--contraction" data-sub="lipschitz-dynamics--contraction">One-sided Lipschitz and contraction</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--learned" data-sub="lipschitz-dynamics--learned">Lipschitz bounds in learned dynamics</a><a class="sublink" href="#/lipschitz-dynamics/lipschitz-dynamics--self-check" data-sub="lipschitz-dynamics--self-check">Self-check</a></div></div><div class="navfoot"><a href="files/MPC%20Theory%20-%20Study%20Notes.pdf">PDF</a> · <a href="https://github.com/anirudhgj/dynamics-notes">Source</a></div></nav>
 <d-front-matter><script type="text/json">{"title": "Dynamics Notes", "description": "Study notes on model predictive control: theory, implementation, and its use in agents.", "authors": [{"author": "Anirudh Jamkhandi"}], "publishedDate": "2026-10-26T12:00:00.000Z"}</script></d-front-matter>
 <d-title><h1>Dynamics Notes</h1>
 <p>Study notes on model predictive control: the theory of receding-horizon control, how to implement it, and how it is used in agents.</p></d-title>
@@ -296,6 +296,183 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 
 <p>The Riccati differential equation is</p>
 <d-math block>-\dot{P} = A(t)^\top P + P A(t) - P B(t) R^{-1} B(t)^\top P + Q.</d-math>
+</section>
+<section class="tab" id="tab-lipschitz-dynamics"><h2 id="lipschitz-dynamics">Lipschitz Dynamics</h2>
+<p>A system has Lipschitz dynamics when nearby states always move at similar velocities. This one condition gives unique trajectories, bounded sensitivity to initial conditions, and the contraction tools used to prove stability. This tab starts from the basics and builds up to learned dynamics.</p>
+<h3 id="lipschitz-dynamics--basics">Start here: the basics</h3>
+
+<p><b>What a dynamical system is.</b> A state <d-math>x</d-math> (a number or a vector) changes over time by a rule</p>
+<d-math block>\dot{x} = f(x).</d-math>
+<p>Read it as: at state <d-math>x</d-math>, the velocity is <d-math>f(x)</d-math>. Pick a start <d-math>x(0)</d-math>, follow the velocities, and you trace a trajectory <d-math>x(t)</d-math>. For <d-math>\dot{x} = -2x</d-math>, the velocity at <d-math>x = 1</d-math> is <d-math>-2</d-math> and at <d-math>x = 0.5</d-math> it is <d-math>-1</d-math>, so the state slides toward 0. The solution is <d-math>x(t) = x(0)\, e^{-2t}</d-math>.</p>
+
+<p><b>What Lipschitz means.</b> <d-math>f</d-math> is Lipschitz with constant <d-math>L</d-math> if the gap between two outputs is never more than <d-math>L</d-math> times the gap between the inputs:</p>
+<d-math block>|f(x) - f(y)| \le L\, |x - y| .</d-math>
+<p>In one dimension, every chord of the graph of <d-math>f</d-math> has slope at most <d-math>L</d-math> in size. It is a speed limit on how steeply <d-math>f</d-math> changes: no jumps and no vertical tangents.</p>
+
+<p><b>Two quick examples.</b> For <d-math>f(x) = -2x</d-math>, <d-math>|f(x) - f(y)| = 2|x - y|</d-math>, so <d-math>L = 2</d-math>. For <d-math>f(x) = \sin x</d-math>, the slope <d-math>\cos x</d-math> never exceeds 1 in size, so <d-math>L = 1</d-math>.</p>
+
+<p><b>Why it matters for dynamics.</b> Start two trajectories close together. If <d-math>f</d-math> is Lipschitz, their velocities are close too, so they cannot suddenly fly apart. With starts 1.0 and 1.1 (gap 0.1):</p>
+
+<table>
+<thead><tr><th>System</th><th><d-math>L</d-math></th><th>Gap at time <d-math>t</d-math></th><th>Gap at <d-math>t = 1</d-math></th></tr></thead>
+<tbody>
+<tr><td><d-math>\dot{x} = -2x</d-math></td><td>2</td><td><d-math>0.1\, e^{-2t}</d-math> (shrinks)</td><td>0.0135</td></tr>
+<tr><td><d-math>\dot{x} = 2x</d-math></td><td>2</td><td><d-math>0.1\, e^{2t}</d-math> (grows)</td><td>0.739</td></tr>
+<tr><td>Any system with <d-math>L = 2</d-math></td><td>2</td><td>at most <d-math>0.1\, e^{2t}</d-math></td><td>at most 0.739</td></tr>
+</tbody>
+</table>
+
+<p>The gap can shrink or grow, but never faster than <d-math>e^{Lt}</d-math>. That guarantee gives three things, each covered below: <b>uniqueness</b> (a start determines exactly one future), <b>predictability</b> (small errors stay controlled over finite time), and <b>stability tools</b> (a signed version of <d-math>L</d-math> tells you when all trajectories converge).</p>
+
+<p><b>Notation.</b> <d-math>\|x\|</d-math> is the length of a vector. <d-math>\sup</d-math> is the largest value (strictly, the least upper bound). <d-math>Df(x)</d-math> is the Jacobian, the matrix of partial derivatives, which plays the role of the slope in several dimensions.</p>
+
+<h3 id="lipschitz-dynamics--definition">Lipschitz continuity</h3>
+
+<p>For <d-math>\dot{x} = f(x, t)</d-math> on a domain <d-math>D</d-math>, <d-math>f</d-math> is Lipschitz in <d-math>x</d-math> with constant <d-math>L</d-math> if, for all <d-math>t</d-math>,</p>
+<d-math block>\| f(x, t) - f(y, t) \| \le L\, \| x - y \| \qquad \forall\, x, y \in D .</d-math>
+<p>The smallest such <d-math>L</d-math> is the Lipschitz constant.</p>
+<ul>
+<li><b>Global:</b> one <d-math>L</d-math> works on all of <d-math>\mathbb{R}^n</d-math>. Linear <d-math>f(x) = Ax</d-math> has <d-math>L = \|A\|</d-math>, the induced matrix norm.</li>
+<li><b>Local:</b> every point has a neighborhood with its own finite <d-math>L</d-math>. Every <d-math>C^1</d-math> function is locally Lipschitz.</li>
+<li><b>Jacobian test:</b> on a convex set, the best constant is <d-math>L = \sup_{x \in D} \|Df(x)\|</d-math>.</li>
+</ul>
+
+<table>
+<thead><tr><th>Function</th><th>Lipschitz?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td><d-math>Ax</d-math></td><td>Globally, <d-math>L = \|A\|</d-math></td><td>Linear, bounded derivative</td></tr>
+<tr><td><d-math>\sin x,\ \tanh x</d-math></td><td>Globally, <d-math>L = 1</d-math></td><td><d-math>|f'(x)| \le 1</d-math> everywhere</td></tr>
+<tr><td><d-math>\operatorname{ReLU}(x)</d-math></td><td>Globally, <d-math>L = 1</d-math></td><td>Not differentiable at 0, but slopes are 0 or 1</td></tr>
+<tr><td><d-math>x^2</d-math></td><td>Locally only</td><td><d-math>f'(x) = 2x</d-math> is unbounded on <d-math>\mathbb{R}</d-math></td></tr>
+<tr><td><d-math>\sqrt{|x|}</d-math></td><td>Not at <d-math>x = 0</d-math></td><td>Slope blows up near 0</td></tr>
+</tbody>
+</table>
+
+<p>The chain of strength: continuously differentiable implies locally Lipschitz, which implies continuous. Neither converse holds.</p>
+
+<h3 id="lipschitz-dynamics--uniqueness">Existence and uniqueness</h3>
+
+<p><b>Picard–Lindelöf theorem.</b> If <d-math>f</d-math> is continuous in <d-math>t</d-math> and Lipschitz in <d-math>x</d-math> near <d-math>(x_0, t_0)</d-math>, then <d-math>\dot{x} = f(x, t)</d-math>, <d-math>x(t_0) = x_0</d-math> has exactly one solution on some interval <d-math>[t_0 - h, t_0 + h]</d-math> <d-cite key="khalil2002nonlinear"></d-cite>.</p>
+
+<p>The proof rewrites the ODE as an integral equation and iterates it:</p>
+<d-math block>x_{k+1}(t) = x_0 + \int_{t_0}^{t} f\big(x_k(s), s\big)\, ds .</d-math>
+<p>Each iteration shrinks the gap between successive guesses by a factor <d-math>Lh</d-math>. For <d-math>Lh &lt; 1</d-math> the map is a contraction, and the Banach fixed-point theorem gives one unique fixed point: the solution.</p>
+
+<ul>
+<li><b>Local Lipschitz</b> gives a unique solution that may still blow up in finite time. <d-math>\dot{x} = x^2</d-math>, <d-math>x(0) = 1</d-math> gives <d-math>x(t) = 1/(1 - t)</d-math>, which escapes at <d-math>t = 1</d-math>.</li>
+<li><b>Global Lipschitz</b> rules out blow-up: the solution exists for all <d-math>t</d-math>.</li>
+<li><b>Continuity alone</b> (Peano's theorem) gives existence but not uniqueness.</li>
+</ul>
+
+<p><b>Counterexample.</b> <d-math>\dot{x} = \sqrt{|x|}</d-math>, <d-math>x(0) = 0</d-math>. The right-hand side is continuous but not Lipschitz at 0. Both <d-math>x(t) = 0</d-math> and <d-math>x(t) = t^2/4</d-math> solve it. The state can also rest at 0 for any time <d-math>c</d-math> and then leave along <d-math>(t - c)^2/4</d-math>, so there are infinitely many solutions.</p>
+
+<figure class="l-page">
+<svg class="fig" viewBox="0 0 704 250" role="img" aria-label="Non-uniqueness: x dot equals square root of x from x of 0 has infinitely many solutions" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><line x1="60" x2="680" y1="210" y2="210" stroke="#aaa"/><line x1="60" x2="60" y1="20" y2="210" stroke="#aaa"/><text x="60.0" y="226" text-anchor="middle" font-size="12" fill="#777">0</text><text x="163.3" y="226" text-anchor="middle" font-size="12" fill="#777">1</text><text x="266.7" y="226" text-anchor="middle" font-size="12" fill="#777">2</text><text x="370.0" y="226" text-anchor="middle" font-size="12" fill="#777">3</text><text x="473.3" y="226" text-anchor="middle" font-size="12" fill="#777">4</text><text x="576.7" y="226" text-anchor="middle" font-size="12" fill="#777">5</text><text x="680.0" y="226" text-anchor="middle" font-size="12" fill="#777">6</text><text x="52" y="214.0" text-anchor="end" font-size="12" fill="#777">0</text><text x="52" y="150.7" text-anchor="end" font-size="12" fill="#777">3</text><text x="52" y="87.3" text-anchor="end" font-size="12" fill="#777">6</text><text x="52" y="24.0" text-anchor="end" font-size="12" fill="#777">9</text><text x="680" y="244" text-anchor="end" font-size="12" fill="#777">time t</text><text x="66" y="24" font-size="12" fill="#777">x(t)</text><path d="M60.0 210.0 L163.3 210.0 L171.9 210.0 L180.6 209.9 L189.2 209.7 L197.8 209.4 L206.4 209.1 L215.0 208.7 L223.6 208.2 L232.2 207.7 L240.8 207.0 L249.4 206.3 L258.1 205.6 L266.7 204.7 L275.3 203.8 L283.9 202.8 L292.5 201.8 L301.1 200.6 L309.7 199.4 L318.3 198.1 L326.9 196.8 L335.6 195.3 L344.2 193.8 L352.8 192.3 L361.4 190.6 L370.0 188.9 L378.6 187.1 L387.2 185.2 L395.8 183.3 L404.4 181.3 L413.1 179.2 L421.7 177.0 L430.3 174.8 L438.9 172.5 L447.5 170.1 L456.1 167.6 L464.7 165.1 L473.3 162.5 L481.9 159.8 L490.6 157.1 L499.2 154.3 L507.8 151.4 L516.4 148.4 L525.0 145.3 L533.6 142.2 L542.2 139.0 L550.8 135.8 L559.4 132.4 L568.1 129.0 L576.7 125.6 L585.3 122.0 L593.9 118.4 L602.5 114.7 L611.1 110.9 L619.7 107.0 L628.3 103.1 L636.9 99.1 L645.6 95.1 L654.2 90.9 L662.8 86.7 L671.4 82.4 L680.0 78.1" stroke="#aaa" stroke-width="1.5" fill="none"/><path d="M60.0 210.0 L266.7 210.0 L273.6 210.0 L280.4 209.9 L287.3 209.8 L294.2 209.6 L301.1 209.4 L308.0 209.2 L314.9 208.9 L321.8 208.5 L328.7 208.1 L335.6 207.7 L342.4 207.2 L349.3 206.6 L356.2 206.0 L363.1 205.4 L370.0 204.7 L376.9 204.0 L383.8 203.2 L390.7 202.4 L397.6 201.5 L404.4 200.6 L411.3 199.7 L418.2 198.6 L425.1 197.6 L432.0 196.5 L438.9 195.3 L445.8 194.1 L452.7 192.9 L459.6 191.6 L466.4 190.3 L473.3 188.9 L480.2 187.5 L487.1 186.0 L494.0 184.5 L500.9 182.9 L507.8 181.3 L514.7 179.6 L521.6 177.9 L528.4 176.1 L535.3 174.3 L542.2 172.5 L549.1 170.6 L556.0 168.6 L562.9 166.6 L569.8 164.6 L576.7 162.5 L583.6 160.4 L590.4 158.2 L597.3 156.0 L604.2 153.7 L611.1 151.4 L618.0 149.0 L624.9 146.6 L631.8 144.1 L638.7 141.6 L645.6 139.0 L652.4 136.4 L659.3 133.8 L666.2 131.1 L673.1 128.3 L680.0 125.6" stroke="#aaa" stroke-width="1.5" fill="none"/><path d="M60.0 210.0 L370.0 210.0 L375.2 210.0 L380.3 209.9 L385.5 209.9 L390.7 209.8 L395.8 209.7 L401.0 209.5 L406.2 209.4 L411.3 209.2 L416.5 208.9 L421.7 208.7 L426.8 208.4 L432.0 208.1 L437.2 207.8 L442.3 207.4 L447.5 207.0 L452.7 206.6 L457.8 206.2 L463.0 205.7 L468.2 205.2 L473.3 204.7 L478.5 204.2 L483.7 203.6 L488.8 203.0 L494.0 202.4 L499.2 201.8 L504.3 201.1 L509.5 200.4 L514.7 199.7 L519.8 198.9 L525.0 198.1 L530.2 197.3 L535.3 196.5 L540.5 195.6 L545.7 194.7 L550.8 193.8 L556.0 192.9 L561.2 191.9 L566.3 190.9 L571.5 189.9 L576.7 188.9 L581.8 187.8 L587.0 186.7 L592.2 185.6 L597.3 184.5 L602.5 183.3 L607.7 182.1 L612.8 180.9 L618.0 179.6 L623.2 178.3 L628.3 177.0 L633.5 175.7 L638.7 174.3 L643.8 172.9 L649.0 171.5 L654.2 170.1 L659.3 168.6 L664.5 167.1 L669.7 165.6 L674.8 164.1 L680.0 162.5" stroke="#aaa" stroke-width="1.5" fill="none"/><path d="M60.0 210.0 L60.0 210.0 L70.3 209.9 L80.7 209.8 L91.0 209.5 L101.3 209.2 L111.7 208.7 L122.0 208.1 L132.3 207.4 L142.7 206.6 L153.0 205.7 L163.3 204.7 L173.7 203.6 L184.0 202.4 L194.3 201.1 L204.7 199.7 L215.0 198.1 L225.3 196.5 L235.7 194.7 L246.0 192.9 L256.3 190.9 L266.7 188.9 L277.0 186.7 L287.3 184.5 L297.7 182.1 L308.0 179.6 L318.3 177.0 L328.7 174.3 L339.0 171.5 L349.3 168.6 L359.7 165.6 L370.0 162.5 L380.3 159.3 L390.7 156.0 L401.0 152.5 L411.3 149.0 L421.7 145.3 L432.0 141.6 L442.3 137.7 L452.7 133.8 L463.0 129.7 L473.3 125.6 L483.7 121.3 L494.0 116.9 L504.3 112.4 L514.7 107.8 L525.0 103.1 L535.3 98.3 L545.7 93.4 L556.0 88.4 L566.3 83.3 L576.7 78.1 L587.0 72.7 L597.3 67.3 L607.7 61.7 L618.0 56.1 L628.3 50.3 L638.7 44.5 L649.0 38.5 L659.3 32.5 L669.7 26.3 L680.0 20.0" stroke="hsl(206,70%,45%)" stroke-width="2" fill="none"/><line x1="60" x2="680" y1="210" y2="210" stroke="#222" stroke-width="2.5"/><text x="597.3" y="59.3" font-size="12" fill="hsl(206,70%,35%)" text-anchor="end">x = t²/4</text><text x="85.8" y="49.6" font-size="12" fill="#777">grey: stay at 0 until time c, then x = (t − c)²/4</text><text x="85.8" y="65.6" font-size="12" fill="#222">black: x = 0 for all t</text></svg>
+<figcaption><b>Figure 1.</b> Solutions of <d-math>\dot{x} = \sqrt{|x|}</d-math> from <d-math>x(0) = 0</d-math>. Black: the state stays at 0. Blue: it leaves at once along <d-math>t^2/4</d-math>. Grey: it waits until <d-math>c = 1, 2, 3</d-math>, then leaves. Without a Lipschitz bound, the present does not fix the future.</figcaption>
+</figure>
+
+<h3 id="lipschitz-dynamics--gronwall">Grönwall and sensitivity</h3>
+
+<p>Two trajectories of an <d-math>L</d-math>-Lipschitz system separate at most like <d-math>e^{Lt}</d-math>. The tool behind this is Grönwall's inequality: if <d-math>u(t) \ge 0</d-math> and</p>
+<d-math block>u(t) \le a + L \int_{t_0}^{t} u(s)\, ds \quad\Longrightarrow\quad u(t) \le a\, e^{L (t - t_0)} .</d-math>
+
+<p><b>Continuous dependence on initial conditions.</b> Let <d-math>x(t)</d-math> and <d-math>y(t)</d-math> solve the same system and set <d-math>e(t) = \|x(t) - y(t)\|</d-math>. The integral form and the Lipschitz bound give <d-math>e(t) \le e(t_0) + L \int e(s)\, ds</d-math>, so</p>
+<d-math block>\| x(t) - y(t) \| \le \| x(t_0) - y(t_0) \|\, e^{L (t - t_0)} .</d-math>
+
+<p><b>Perturbed vector field.</b> If <d-math>y</d-math> solves <d-math>\dot{y} = g(y, t)</d-math> with <d-math>\|f - g\| \le \varepsilon</d-math> everywhere, then</p>
+<d-math block>\| x(t) - y(t) \| \le \| x(0) - y(0) \|\, e^{L t} + \frac{\varepsilon}{L} \left( e^{L t} - 1 \right) .</d-math>
+
+<ul>
+<li>The bound is finite for every finite <d-math>t</d-math>, so the flow map is continuous (in fact Lipschitz) in <d-math>x_0</d-math>.</li>
+<li>It is a worst case. <d-math>L</d-math> bounds the largest local stretching rate, so a stable system can still have a large <d-math>L</d-math>.</li>
+<li>The largest Lyapunov exponent is at most <d-math>L</d-math>. Chaos needs a positive exponent; a finite <d-math>L</d-math> only caps how fast neighbors diverge.</li>
+<li>Error bounds for Euler and Runge–Kutta integrators carry an <d-math>e^{LT}</d-math> factor from this same argument.</li>
+</ul>
+
+<h3 id="lipschitz-dynamics--contraction">One-sided Lipschitz and contraction</h3>
+
+<p>The constant <d-math>L</d-math> only bounds divergence. A signed version can also prove convergence, which makes it the right tool for stability. <d-math>f</d-math> has one-sided Lipschitz constant <d-math>\nu</d-math> if</p>
+<d-math block>\big\langle f(x) - f(y),\, x - y \big\rangle \le \nu\, \| x - y \|^2 \qquad \forall\, x, y .</d-math>
+<p><d-math>\nu</d-math> can be negative, and <d-math>\nu \le L</d-math> always. The same Grönwall argument gives</p>
+<d-math block>\| x(t) - y(t) \| \le e^{\nu t}\, \| x(0) - y(0) \| .</d-math>
+<p>If <d-math>\nu &lt; 0</d-math>, every pair of trajectories converges exponentially at rate <d-math>|\nu|</d-math>. The system <b>contracts</b>.</p>
+
+<p><b>Logarithmic norm.</b> For differentiable <d-math>f</d-math>, <d-math>\nu = \sup_x \mu(Df(x))</d-math>, where the log norm (matrix measure) is</p>
+<d-math block>\mu(A) = \lim_{h \to 0^+} \frac{\|I + hA\| - 1}{h}, \qquad \mu_2(A) = \lambda_{\max}\!\left( \tfrac{A + A^\top}{2} \right) .</d-math>
+
+<table>
+<thead><tr><th>Norm</th><th><d-math>\mu(A)</d-math></th></tr></thead>
+<tbody>
+<tr><td>2-norm</td><td>Largest eigenvalue of <d-math>(A + A^\top)/2</d-math></td></tr>
+<tr><td>1-norm</td><td><d-math>\max_j \big( a_{jj} + \sum_{i \ne j} |a_{ij}| \big)</d-math> (columns)</td></tr>
+<tr><td><d-math>\infty</d-math>-norm</td><td><d-math>\max_i \big( a_{ii} + \sum_{j \ne i} |a_{ij}| \big)</d-math> (rows)</td></tr>
+</tbody>
+</table>
+
+<p><b>Contraction theorem.</b> If <d-math>\mu(Df(x, t)) \le -c &lt; 0</d-math> for all <d-math>x</d-math> and <d-math>t</d-math>, all trajectories converge to each other exponentially at rate <d-math>c</d-math> <d-cite key="lohmiller1998contraction"></d-cite>. For an autonomous system, this means a unique, globally exponentially stable equilibrium. A weighted norm <d-math>\|\Theta x\|</d-math> (a contraction metric) widens the test.</p>
+
+<ul>
+<li>Eigenvalues of <d-math>Df</d-math> at one point give only local stability. <d-math>\mu(Df) &lt; 0</d-math> everywhere gives global convergence.</li>
+<li>No equilibrium needs to be found first. Contraction is a property of the vector field.</li>
+<li>Example: <d-math>\dot{x} = -x + W \tanh(x) + u(t)</d-math> has <d-math>\mu_2(Df) \le -1 + \|W\|_2</d-math>, so it contracts when <d-math>\|W\|_2 &lt; 1</d-math>, for any input <d-math>u(t)</d-math>.</li>
+</ul>
+
+<p>This links to the Time-Varying Dynamical Systems tab: frozen-time eigenvalues can mislead, but <d-math>\mu(A(t)) \le -c</d-math> for all <d-math>t</d-math> is a sufficient condition for uniform exponential stability of <d-math>\dot{x} = A(t) x</d-math>. The Markus–Yamabe matrix there fails this test.</p>
+
+<h3 id="lipschitz-dynamics--learned">Lipschitz bounds in learned dynamics</h3>
+
+<p>In RNNs and neural ODEs, the Lipschitz constant decides whether trained dynamics are well posed, stable and robust. Constants multiply under composition, and tanh and ReLU are 1-Lipschitz, so</p>
+<d-math block>L\big(\sigma \circ W_k \circ \cdots \circ \sigma \circ W_1\big) \le \prod_{i=1}^{k} \| W_i \|_2 .</d-math>
+<p>The bound is usually loose, but it is cheap and differentiable.</p>
+
+<table>
+<thead><tr><th>Model</th><th>Dynamics</th><th>Role of the Lipschitz constant</th></tr></thead>
+<tbody>
+<tr><td>Neural ODE <d-cite key="chen2018neural"></d-cite></td><td><d-math>\dot{x} = f_\theta(x, t)</d-math></td><td>Lipschitz <d-math>f_\theta</d-math> gives a unique flow, so the adjoint method is valid</td></tr>
+<tr><td>Vanilla RNN</td><td><d-math>h_{t+1} = \tanh(W h_t + U x_t)</d-math></td><td><d-math>\|W\|_2 &lt; 1</d-math> makes the update a contraction (echo-state property): old inputs fade</td></tr>
+<tr><td>Continuous-time RNN</td><td><d-math>\tau \dot{h} = -h + W \phi(h) + u</d-math></td><td>Contracts when <d-math>\|W\|_2\, L_\phi &lt; 1</d-math></td></tr>
+<tr><td>Lipschitz RNN <d-cite key="erichson2021lipschitz"></d-cite></td><td><d-math>\dot{h} = A h + \tanh(W h + U x + b)</d-math></td><td><d-math>A</d-math> and <d-math>W</d-math> built from symmetric and skew-symmetric parts to bound the hidden-state Jacobian</td></tr>
+</tbody>
+</table>
+
+<p>Ways to enforce a small constant:</p>
+<ul>
+<li><b>Spectral normalization</b> <d-cite key="miyato2018spectral"></d-cite>: divide <d-math>W</d-math> by a power-iteration estimate of <d-math>\|W\|_2</d-math>, giving <d-math>L \le 1</d-math> per layer.</li>
+<li><b>Orthogonal weights:</b> <d-math>\|W\|_2 = 1</d-math> exactly, so gradients neither explode nor vanish through the linear part.</li>
+<li><b>Jacobian regularization:</b> penalize <d-math>\|Df(x)\|_F^2</d-math> on training data.</li>
+<li><b>Skew-symmetric weights:</b> <d-math>W = M - M^\top</d-math> has purely imaginary eigenvalues, so the linear part neither grows nor decays.</li>
+</ul>
+
+<p><b>The trade-off.</b> A small <d-math>L</d-math> or negative <d-math>\nu</d-math> makes a model stable and robust but limits memory. A contracting RNN forgets its initial state at rate <d-math>e^{-ct}</d-math>, so tasks with long dependencies push it toward the edge of stability, <d-math>\nu \approx 0</d-math>.</p>
+
+<h3 id="lipschitz-dynamics--self-check">Self-check</h3>
+
+<p>Try each question before opening its answer.</p>
+
+<details>
+<summary>What is the Lipschitz constant of <d-math>f(x) = 3\sin x - x</d-math> on <d-math>\mathbb{R}</d-math>?</summary>
+<p><d-math>f'(x) = 3\cos x - 1</d-math> ranges over <d-math>[-4, 2]</d-math>, so <d-math>L = \sup |f'(x)| = 4</d-math>, reached at <d-math>x = \pi</d-math>.</p>
+</details>
+
+<details>
+<summary>Why does <d-math>\dot{x} = \sqrt{|x|}</d-math> from <d-math>x(0) = 0</d-math> have many solutions, while <d-math>\dot{x} = \sqrt{|x|}</d-math> from <d-math>x(0) = 1</d-math> has one?</summary>
+<p>Uniqueness needs a Lipschitz bound only near the trajectory. Near <d-math>x = 1</d-math>, <d-math>\sqrt{x}</d-math> is smooth with bounded slope, so Picard–Lindelöf applies. At <d-math>x = 0</d-math> the slope is unbounded, and the theorem gives nothing.</p>
+</details>
+
+<details>
+<summary><d-math>\dot{x} = -x</d-math> has <d-math>L = 1</d-math>, and Grönwall allows the gap to grow like <d-math>e^{t}</d-math>. Is that what happens?</summary>
+<p>No. The gap shrinks like <d-math>e^{-t}</d-math>. <d-math>L</d-math> ignores direction, so the bound is a loose worst case. The one-sided constant is <d-math>\nu = -1</d-math>, which gives the exact rate.</p>
+</details>
+
+<details>
+<summary>Every eigenvalue of <d-math>Df(x)</d-math> has negative real part at every <d-math>x</d-math>. Does the system contract?</summary>
+<p>Not necessarily. Contraction needs <d-math>\mu(Df) &lt; 0</d-math>, which is stronger than stable eigenvalues. For example, <d-math>A = \begin{bmatrix} -1 &amp; 10 \\ 0 &amp; -1 \end{bmatrix}</d-math> has both eigenvalues at <d-math>-1</d-math> but <d-math>\mu_2(A) = -1 + 5 = 4 &gt; 0</d-math>, so some distances grow at first.</p>
+</details>
+
+<details>
+<summary>Why can a strongly contracting RNN struggle with long-memory tasks?</summary>
+<p>Contraction makes every trajectory forget its start at rate <d-math>e^{-ct}</d-math>, so information about early inputs decays exponentially. Long memory needs <d-math>\nu</d-math> near 0, where the dynamics neither forget fast nor blow up.</p>
+</details>
 </section>
 </d-article>
 <d-appendix>
