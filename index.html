@@ -244,13 +244,14 @@ u_0^\star = -\begin{bmatrix} I &amp; 0 &amp; \cdots &amp; 0 \end{bmatrix} H^{-1}
 
 <h3 id="time-varying-systems--why">Why systems vary</h3>
 
-<p>Time invariance is an approximation. It holds when the system's parameters change much more slowly than the dynamics you care about. A model needs time dependence when that separation of time scales fails. This happens for five common reasons.</p>
+<p>Time invariance is an approximation. It holds when the system's parameters change much more slowly than the dynamics you care about. A model needs time dependence when that separation of time scales fails. This happens for six common reasons.</p>
 
 <ol>
 <li><b>The physical parameters change.</b> A rocket burns fuel and loses mass. A battery's internal resistance rises as it discharges. Friction grows as parts wear, and coefficients drift with temperature.</li>
 <li><b>The environment follows a schedule.</b> A satellite sees a gravity gradient that repeats every orbit. Rotating machinery, tides, seasons and daily power demand are all periodic. A known external schedule makes <d-math>A(t)</d-math> and <d-math>B(t)</d-math> functions of time, often periodic ones.</li>
 <li><b>Linearization along a trajectory.</b> A nonlinear plant <d-math>\dot{x} = f(x, u)</d-math> can be time-invariant and still give an LTV model. Linearizing at a fixed equilibrium gives constant matrices. Linearizing along a moving reference <d-math>\bar{x}(t)</d-math>, as in tracking or trajectory optimization, gives <d-math>A(t) = \partial f / \partial x \,|_{\bar{x}(t)}</d-math>. This is the most common source of LTV models in control.</li>
-<li><b>Hidden slow states.</b> A variable left out of the model, such as an operating point, a load or a context, shows up as parameters that change over time. Gain scheduling and linear parameter-varying (LPV) models make this explicit. Networks whose connection strengths change, through learning or with context, are another example.</li>
+<li><b>Hidden slow states.</b> A variable left out of the model, such as an operating point, a load or a context, shows up as parameters that change over time. Gain scheduling and linear parameter-varying (LPV) models make this explicit.</li>
+<li><b>Neural circuits change their own wiring.</b> A common model of a population of neurons is a rate network, <d-math>\dot{h} = -h + J(t) \tanh(h) + B u(t)</d-math>, where <d-math>J(t)</d-math> holds the connection strengths. Those strengths do not stay fixed. Short-term synaptic depression and facilitation change them over milliseconds to seconds. Neuromodulators such as dopamine and acetylcholine shift neuronal gain with arousal and attention. Long-term plasticity rewires the circuit as an animal learns, over hours to days. The same circuit can also route activity differently depending on the task or context. When any of these changes on the time scale of the recorded activity, a fixed-<d-math>J</d-math> model is the wrong fit, and <d-math>J(t)</d-math> has to vary.</li>
 <li><b>Variation by design.</b> A controller can vary on purpose. A finite-horizon LQR has a gain <d-math>K(t)</d-math> that changes as the deadline approaches. Periodic forcing can also stabilize a system that no constant input could: vibrating the pivot of an inverted pendulum fast enough keeps it upright (Kapitza's pendulum).</li>
 </ol>
 
